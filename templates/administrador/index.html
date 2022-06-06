@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+{% block contenido %}
+<br>
+<h1 class="text-center">Listado de Agentes</h1>
+<a class="btn btn-primary" href="{% url 'crear_agente'%}" role="button"> ¿Nuevo Agente? </a>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Cédula</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Agente</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for agente in listaAgentes%}
+        <tr class="table-secondary text-dark">
+            <td><a href="{% url 'modificar_agente' agente.agente_id %}">{{agente.persona.cedula}}</a></td>
+            <td>{{agente.persona.apellidos}}</td>
+            <td>{{agente.persona.nombres}}</td>
+            <td>{{agente.funcion}}</td>
+            <td>
+                <a class="btn btn-danger" href="{% url 'eliminar_agente' agente.agente_id %}" role="button"> Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

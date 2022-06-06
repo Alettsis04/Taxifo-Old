@@ -1,0 +1,73 @@
+{% extends "master.html" %}
+
+{% block contenido %}
+<br>
+<h1 class="text-center">Crear Cliente</h1>
+<form method="POST"> {% csrf_token %}
+    <br>
+    <h2><strong>Barrio: </strong> {{barrio.nombre}}</h2>
+    <br>
+    <h4 class="font-weight-bold">Datos de la Persona:</h4>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_cedula">Cedula</label>
+            <input type="text" class="form-control" name="cedula" maxlength="10" required id="id_cedula">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_apellidos">Apellidos:</label>
+            <input type="text" class="form-control" name="apellidos" maxlength="70" required id="id_apellidos">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_nombres">Nombres:</label>
+            <input type="text" class="form-control" name="nombres" maxlength="70" required id="id_nombres">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_genero">Genero:</label>
+            <select name="genero" id="id_genero" class="form-control">
+                <option value="femenino">Femenino</option>
+                <option value="masculino">Masculino</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_correo">Correo:</label>
+            <input type="email" class="form-control" name="correo" maxlength="105" required id="id_correo"></p>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_telefono">Telefono:</label>
+            <input type="text" class="form-control" name="telefono" maxlength="15" required id="id_telefono">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_celular">Celular:</label>
+            <input type="text" class="form-control" name="celular" maxlength="15" required id="id_celular">
+        </div>
+    </div>
+    <h4><strong>Datos del Cliente:</strong></h4>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_calle1">Calle 1:</label>
+            <input type="text" class="form-control" name="calle1" maxlength="100" required id="id_calle1">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_calle2">Calle 2:</label>
+            <input type="text" class="form-control" name="calle2" maxlength="100" required id="id_calle2">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_referencia1">Referencia 1:</label>
+            <input type="text" class="form-control" name="referencia1" maxlength="150" required id="id_referencia1">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_referencia2">Referencia 2:</label>
+            <input type="text" class="form-control" name="referencia2" maxlength="150" required id="id_referencia2">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success"> Crear Cliente </button>
+</form>
+<a class="btn btn-secondary" href="{% url 'barrios'%}" role="button">¿Volver?</a>
+{% endblock %}

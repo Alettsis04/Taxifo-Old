@@ -1,0 +1,72 @@
+{% extends "master.html" %}
+{% block contenido %}
+<br>
+<h1 class="text-center">Modificar Persona</h1>
+<form method="POST"> {% csrf_token %}
+    <h2 class="font-weight-bold">Datos de la Persona: </h2>
+    <br>
+    <h3><strong>Cédula:</strong> {{ formulario_persona.cedula.value }}</h3>
+    <br>
+    <input type="hidden" class="form-control" name="cedula" maxlength="70" required id="id_apellidos"
+                value="{{ formulario_persona.cedula.value }}">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_apellidos">Apellidos:</label>
+            <input type="text" class="form-control" name="apellidos" maxlength="70" required id="id_apellidos"
+                value="{{ formulario_persona.apellidos.value }}">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_nombres">Nombres:</label>
+            <input type="text" class="form-control" name="nombres" maxlength="70" required id="id_nombres"
+                value="{{ formulario_persona.nombres.value }}">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_genero">Genero:</label>
+            <select name="genero" id="id_genero" class="form-control">
+                {% if formulario_persona.genero.value == 'femenino' %}
+                <option value="femenino" selected>Femenino</option>
+                <option value="masculino">Masculino</option>
+                {% elif formulario_persona.genero.value == 'masculino' %}
+                <option value="femenino">Femenino</option>
+                <option value="masculino" selected>Masculino</option>
+                {% endif %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="id_correo">Correo:</label>
+        <input type="email" class="form-control" name="correo" maxlength="105" required id="id_correo"
+            value="{{ formulario_persona.correo.value }}">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_telefono">Telefono:</label>
+            <input type="text" class="form-control" name="telefono" maxlength="15" required id="id_telefono"
+                value="{{ formulario_persona.telefono.value }}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_celular">Celular:</label>
+            <input type="text" class="form-control" name="celular" maxlength="15" required id="id_celular"
+                value="{{ formulario_persona.celular.value }}">
+        </div>
+    </div>
+    <h2 class="font-weight-bold">Datos del Agente: </h2>
+    <br>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_tipoAgente">Tipo de Agente:</label>
+            <select name="funcion" id="id_agente" class="form-control">
+                {% if formulario_agente.funcion.value == 'chofer' %}
+                <option value="chofer" selected>Chofer</option>
+                <option value="call center">Call Center</option>
+                {% elif formulario_agente.funcion.value == 'call center' %}
+                <option value="chofer">Chofer</option>
+                <option value="call center" selected>Call Center</option>
+                {% endif %}
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Modificar Cliente</button>
+</form>
+<a class="btn btn-secondary" href="{% url 'agentes' %}" role="button">¿Volver?</a>
+{% endblock %}

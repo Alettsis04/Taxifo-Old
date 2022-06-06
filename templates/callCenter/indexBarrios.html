@@ -1,0 +1,29 @@
+{% extends "master.html" %}
+{% block contenido %}
+<br>
+<h1 class="text-center">Listado de Barrios</h1>
+<a class="btn btn-primary" href="{% url 'crear_barrio'%}" role="button"> ¿Nuevo Barrio? </a>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Barrio</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for barrio in listaBarrios%}
+        <tr class="table-secondary text-dark">
+            <td><a href="{% url 'modificar_barrio' barrio.barrio_id %}">{{barrio.nombre}}</a></td>
+            <td>
+                <a class="btn btn-success" href="{% url 'crear_cliente' barrio.barrio_id %}" role="button"> Añadir
+                    Cliente
+                </a>
+                <a class="btn btn-danger" href="{% url 'eliminar_barrio' barrio.barrio_id %}" role="button"> Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-secondary" href="{% url 'gestion' %}" role="button">¿Volver?</a>
+{% endblock %}

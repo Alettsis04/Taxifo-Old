@@ -1,0 +1,10 @@
+{% extends "master.html" %}
+   
+{% block contenido %}
+<div class="alert alert-danger" role="alert">
+    <center>
+        No tiene permisos para acceder a este sitio Web.
+    </center>
+    <a href="{% url 'autenticar'%}">Iniciar sesión</a>
+</div>
+{% endblock %}

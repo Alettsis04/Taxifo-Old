@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+{% block contenido %}
+<br>
+<h1 class="text-center">Modificar Barrio</h1>
+<form method="POST"> {% csrf_token %}
+    <h2 class="font-weight-bold">Datos del Barrio: </h2>
+    <br>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_nombre">Nombre del Barrio:</label>
+            <input type="text" class="form-control" name="nombre" maxlength="100" required id="id_nombre"
+                value="{{ formulario_barrio.nombre.value }}">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Modificar Barrio</button>
+</form>
+<a class="btn btn-secondary" href="{% url 'barrios' %}" role="button">¿Volver?</a>
+{% endblock %}

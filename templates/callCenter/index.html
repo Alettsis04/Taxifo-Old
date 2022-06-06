@@ -1,0 +1,33 @@
+{% extends "master.html" %}
+{% block contenido %}
+<br>
+<h1 class="text-center">Listado de Clientes</h1>
+<a class="btn btn-primary" href="{% url 'barrios'%}" role="button"> ¿Barrios? </a>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Cédula</th>
+            <th scope="col">Apellidos y Nombres</th>
+            <th scope="col">Barrio</th>
+            <th scope="col">Calle 1</th>
+            <th scope="col">Calle 2</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in listaClientes%}
+        <tr class="table-secondary text-dark">
+            <td><a href="{% url 'modificar_cliente' cliente.cliente_id %}">{{cliente.persona.cedula}}</a></td>
+            <td>{{cliente.persona.apellidos}} {{cliente.persona.nombres}}</td>
+            <td>{{cliente.barrio.nombre}}</td>
+            <td>{{cliente.calle1}}</td>
+            <td>{{cliente.calle2}}</td>
+            <td>
+                <a class="btn btn-danger" href="{% url 'eliminar_cliente' cliente.cliente_id %}" role="button"> Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

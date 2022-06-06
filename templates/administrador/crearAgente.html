@@ -1,0 +1,59 @@
+{% extends "master.html" %}
+
+{% block contenido %}
+<br>
+<h1 class="text-center">Crear Agente</h1>
+<form method="POST"> {% csrf_token %}
+    <h4 class="font-weight-bold">Datos de la Persona:</h4>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_cedula">Cedula</label>
+            <input type="text" class="form-control" name="cedula" maxlength="10" required id="id_cedula">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_apellidos">Apellidos:</label>
+            <input type="text" class="form-control" name="apellidos" maxlength="70" required id="id_apellidos">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_nombres">Nombres:</label>
+            <input type="text" class="form-control" name="nombres" maxlength="70" required id="id_nombres">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_genero">Genero:</label>
+            <select name="genero" id="id_genero" class="form-control">
+                <option value="femenino">Femenino</option>
+                <option value="masculino">Masculino</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_correo">Correo:</label>
+            <input type="email" class="form-control" name="correo" maxlength="105" required id="id_correo"></p>
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_telefono">Telefono:</label>
+            <input type="text" class="form-control" name="telefono" maxlength="15" required id="id_telefono">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_celular">Celular:</label>
+            <input type="text" class="form-control" name="celular" maxlength="15" required id="id_celular">
+        </div>
+    </div>
+    <h4><strong>Datos del Agente:</strong></h4>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_tipoAgenteo">Tipo de Agente:</label>
+            <select name="funcion" id="id_agente" class="form-control">
+                <option value="chofer">Chofer</option>
+                <option value="call center">Call Center</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success"> Crear Agente </button>
+</form>
+<a class="btn btn-secondary" href="{% url 'gestion'%}" role="button">¿Volver?</a>
+{% endblock %}
